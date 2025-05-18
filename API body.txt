@@ -1,0 +1,24 @@
+User
+
+{
+  "username":"Game",
+  "name" : "Thakoon Wongkain",
+  "email" : "game@gmail.com",
+  "password" : "123",
+  "gender" : "male",
+  "age" : 19,
+  
+}
+
+
+Trip
+
+{
+  "tripName" : "Phuket With Me",
+  "locationName" : "Phuket",
+  "tripDetail" : "Go to Phuket",
+  "dateStart":'2025-06-01',
+  "dateEnd": '2025-06-03',
+  "userId" :
+
+}

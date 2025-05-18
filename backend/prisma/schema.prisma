@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id             String            @id @default(uuid())
+  username       String            @unique
+  name           String
+  email          String            @unique
+  password       String
+  gender         String
+  age            Int
+  img            String?          
+  createdTrips   Trip[]            @relation("CreatedTrips")
+  tripParticipants TripParticipant[]
+  messages        Message[]
+}
+
+model Trip {
+  id             String            @id @default(uuid())
+  tripName       String
+  locationName   String
+  img            String?
+  tripDetail     String
+  dateStart      DateTime
+  dateEnd        DateTime
+  status         TripStatus        @default(PENDING)
+  createdById    String
+  createdBy      User              @relation("CreatedTrips", fields: [createdById], references: [id])
+  participants   TripParticipant[]
+  messages  Message[]
+  latitude       Float?
+  longtitude     Float?
+}
+
+model TripParticipant {
+  id         String   @id @default(uuid())
+  userId     String
+  tripId     String
+  role       ParticipantRole  @default(PARTICIPANT)
+  status     ParticipantStatus @default(PENDING)
+
+  creatorApproved Boolean  @default(false)
+  userConfirmed    Boolean  @default(false)
+
+  user       User     @relation(fields: [userId], references: [id])
+  trip       Trip     @relation(fields: [tripId], references: [id])
+
+  @@unique([userId, tripId]) // prevent duplicate joins
+}
+model Message {
+  id        Int   @id @default(autoincrement())
+  content   String
+  timestamp DateTime @default(now())
+  trip      Trip     @relation(fields: [tripId], references: [id])
+  tripId    String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+}
+enum TripStatus {
+  PENDING
+  CONFIRMED
+  CANCELED
+}
+
+enum ParticipantStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ParticipantRole {
+  CREATOR
+  PARTICIPANT
+  REQUESTING
+}

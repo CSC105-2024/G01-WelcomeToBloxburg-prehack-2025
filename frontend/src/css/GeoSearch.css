@@ -1,0 +1,32 @@
+#map {
+  position: relative;
+  z-index: 0;
+}
+
+
+.leaflet-control-geosearch {
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+  position: absolute;
+}
+
+.leaflet-control-geosearch form input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 250px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.leaflet-control-geosearch form input:focus {
+  border-color: #2563eb; /* Tailwind blue-600 */
+}
+
+.leaflet-control-geosearch .results {
+  background: white;
+  border-radius: 6px;
+  margin-top: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
