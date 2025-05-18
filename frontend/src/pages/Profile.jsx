@@ -119,15 +119,15 @@ function Profile() {
       <div className="relative h-[50vh] w-full flex justify-center font-nunito">
         <div className="w-full h-[25vh] bg-amber-50"></div>
         <div className="absolute w-3/4 h-[25vh] border-1 border-black top-[12vh] z-50 bg-white flex items-center justify-between p-18">
-          <div className="flex items-center ">
+          <div className=" flex items-center ">
             <img
               src={previewImg}
               alt="Profile"
-              className="w-40 h-40 object-cover rounded-full  border-1 border-black"
+              className="w-20 h-35 -ml-15 md:ml-1 md:w-40 md:h-40 object-cover rounded-full  border-1 border-black"
             />
 
-            <div className="space-y-4 p-4">
-              <h1 className="text-2xl flex items-center">
+            <div className="ml-10 -mt-20 mr-4 md:space-y-4 md:p-4">
+              <h1 className="text-xl md:text-2xl flex items-center">
                 {user.name}
                 {isCreator && (
                   <FaEdit
@@ -184,26 +184,26 @@ function Profile() {
               <h1>{user.gender}</h1>
             </div>
           </div>
-          <div className="flex items-center flex-col justify-center space-y-2">
-            <h1 className="text-2xl">Total Contributions</h1>
-            <h1 className="text-2xl">{user.tripParticipants.length}</h1>
+          <div className="flex mt-10 items-center flex-col md:justify-center space-y-2">
+            <h1 className="mt-20 -ml-5 text-sm md:text-2xl">Total Contributions</h1>
+            <h1 className="text-sm -ml-8 md:text-2xl">{user.tripParticipants.length}</h1>
           </div>
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="grid grid-cols-2 gap-x-30 gap-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-20">
           {trip.map((value, index) => {
             console.log(value);
-           
+
             return (
               <div key={index}>
                 <div
                   key={index}
-                  className="border rounded-md shadow-sm bg-white overflow-hidden w-sm"
+                  className="border rounded-md shadow-sm bg-white overflow-hidden"
                 >
                   <div className="h-40 bg-gray-700 flex items-center justify-center relative">
-                    
-                    <DropdownProfile id={value.tripId}/>
+
+                    <DropdownProfile id={value.tripId} />
                     {value.trip.img ? (
                       <img
                         src={value.trip.img}
@@ -215,10 +215,10 @@ function Profile() {
                     )}
                   </div>
 
-                  <div className="p-4 space-y-2">
+                  <div className="p-6 space-y-2">
                     <span className="relative inline-block group">
                       <span
-                        className="group-hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left after:scale-x-0 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-400 text-2xl font-bold cursor-pointer"
+                        className="group-hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left after:scale-x-0 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-400 text-lg md:text-2xl font-bold cursor-pointer"
                         onClick={() =>
                           (window.location.href = `/trip/${value.tripId}`)
                         }
@@ -226,7 +226,7 @@ function Profile() {
                         {value.trip.tripName}
                       </span>
                     </span>
-                    <p className="text-sm text-myPrimary flex flex-col space-y-3">
+                    <p className="text-sm text-myPrimary flex flex-col space-y-1 md:space-y-3">
                       <span className="w-full h-auto flex items-start">
                         <IoLocationOutline className="mr-2 text-lg" />
                         {value.trip.locationName.length > 30
@@ -234,10 +234,9 @@ function Profile() {
                           : value.trip.locationName}
                         ,
                       </span>
-                      <span className="text-black flex">
-                        <FaRegCalendarAlt className="mr-2 text-lg" />{" "}
-                        {format(value.trip.dateStart, "PPP")} -{" "}
-                        {format(value.trip.dateEnd, "PPP")}
+                      <span className="text-black flex items-center">
+                        <FaRegCalendarAlt className="mr-2 text-lg" />
+                        {format(value.trip.dateStart, "PPP")} - {format(value.trip.dateEnd, "PPP")}
                       </span>
                     </p>
                     <div className="mt-2 flex items-center justify-between">
@@ -250,7 +249,7 @@ function Profile() {
                             (window.location.href = `/profile/${value.trip.createdById}`)
                           }
                         />
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs md:text-sm text-gray-600 mr-2">
                           Created by{" "}
                           <span
                             className="duration-300 hover:text-black cursor-pointer"
@@ -263,7 +262,7 @@ function Profile() {
                         </p>
                       </div>
                       <button
-                        className="bg-myPrimary text-white text-sm px-6 py-2 font-bold rounded hover:bg-[#02569E] transition"
+                        className="bg-myPrimary text-white text-sm px-4 py-2 font-bold rounded hover:bg-[#02569E] transition"
                         onClick={() =>
                           (window.location.href = `/trip/${value.tripId}`)
                         }

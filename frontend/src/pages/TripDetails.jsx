@@ -87,9 +87,9 @@ function TripDetails() {
   if (userIds.includes(currentUser.id)) participate = true;
   if (trip.createdById === currentUser.id) creator = true;
   return (
-    <div className="mx-100">
-      <div className="flex justify-center mt-20">
-        <div className="flex space-x-6 font-nunito ">
+    <div className="mx-auto md:mx-50 px-4 md:px-8 lg:px-16">
+      <div className="mt-10 md:mt-20 flex justify-center">
+        <div className="flex space-x-6 font-nunito md:">
           <div>
             {/* Image Lucaton */}
             <div
