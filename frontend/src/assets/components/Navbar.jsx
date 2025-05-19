@@ -39,8 +39,8 @@ function Navbar() {
         </h1>
       </div>
       <div className='space-x-2 flex flex-nowrap'>
-        {!user && (<button className='px-8 py-2 border-1 border-myPrimary rounded-2xl duration-300 hover:bg-myPrimary hover:text-white hover:border-white active:bg-[#02569E]' onClick={() => window.location.href = "/login"}>Login</button>)}
-        {!user && (<button className='px-6 py-2 border-1 text-white bg-myPrimary rounded-2xl duration-300 hover:bg-[#02569E] active:bg-myPrimary' onClick={() => window.location.href = "/register"}>Sign Up</button>)}
+        {!user && (<button className='px-5 md:px-8 md:py-2 border-1 border-myPrimary rounded-2xl duration-300 hover:bg-myPrimary hover:text-white hover:border-white active:bg-[#02569E]' onClick={() => window.location.href = "/login"}>Login</button>)}
+        {!user && (<button className='px-6 md:px-6 md:py-2 border-1 text-white bg-myPrimary rounded-2xl duration-300 hover:bg-[#02569E] active:bg-myPrimary' onClick={() => window.location.href = "/register"}>Sign Up</button>)}
         {user && (<DropdownAvatar id={user.id} />)}
       </div>
     </div>
