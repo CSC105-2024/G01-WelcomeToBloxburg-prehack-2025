@@ -178,10 +178,10 @@ export default function MapComponent() {
 
   return (
     <div>
-      <div className="flex h-full ">
+      <div className="md:flex h-full ">
         <div className="space-x-4">
           <div
-            className="relative  w-[750px] h-[40vh] rounded-xl text-white font-semibold"
+            className="relative ml-4 md:ml-0 w-[400px] h-[35vh] md:w-[750px] md:h-[40vh] rounded-xl text-white font-semibold"
             style={{
               background: `linear-gradient(rgba(0,0,0,0.4) , rgba(0,0,0,0.5)) , url(${previewImg})`,
               backgroundSize: "cover",
@@ -217,13 +217,13 @@ export default function MapComponent() {
           <textarea
             type="text"
             placeholder="What's this trip about?"
-            className="w-full min-h-[100px]  rounded-xl cursor-pointer text-lg p-2"
+            className="w-[380px] md:w-full md:min-h-[100px] h-[100px] ml-4 md:ml-0 rounded-xl cursor-pointer text-lg p-2"
             onClick={() => setOpenEdit(!openEdit)}
             value={tripDetail}
           />
           <hr />
-          <div className="h-fit mr-4">
-            <h1 className="text-2xl my-4">
+          <div className="mx-14 h-fit mr-20 md:mr-4 md:mx-0">
+            <h1 className="mt-100 md:mt-1 text-2xl my-4">
               Participants <span>(1)</span>
             </h1>
             <div className="border-1 w-full  min-h-20 h-auto max-h-[250px] overflow-y-auto rounded-lg"></div>
@@ -402,10 +402,10 @@ export default function MapComponent() {
 
         <div
           ref={mapContainer}
-          className="w-[350px] h-[800px] rounded-md shadow-md sticky top-0 bg-white"
+          className="sm:flex -mt-120 md:mt-1 ml-6 md:ml-1 w-[380px] h-[300px] md:w-[350px] md:h-[600px] rounded-md shadow-md sticky md:top-0 bg-white"
         />
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center md:p-1 p-8 mt-50">
         <button
           className="duration-300 px-8 py-3 bg-myPrimary text-white font-bold rounded-2xl"
           onClick={handleSubmit}
