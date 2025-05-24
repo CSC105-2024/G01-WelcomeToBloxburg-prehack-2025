@@ -224,7 +224,7 @@ export default function MapComponentEdit() {
       <div className="flex h-full ">
         <div className="space-x-4">
           <div
-            className="relative  w-[750px] h-[40vh] rounded-xl text-white font-semibold"
+            className="relative w-[750px] h-[40vh] rounded-xl text-white font-semibold"
             style={{
               background: `linear-gradient(rgba(0,0,0,0.4) , rgba(0,0,0,0.5)) , url(${previewImg})`,
               backgroundSize: "cover",

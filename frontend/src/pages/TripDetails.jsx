@@ -89,11 +89,11 @@ function TripDetails() {
   return (
     <div className="mx-auto md:mx-50 px-4 md:px-8 lg:px-16">
       <div className="mt-10 md:mt-20  md:flex md:justify-center">
-        <div className="flex space-x-6 font-nunito md:">
-          <div className="flex flex-col space-y-4 w-[350px] md:w-[670px]">
+        <div className="flex space-x-6 font-nunito ">
+          <div className="flex flex-col space-y-4 ">
             {/* Image Lucaton */}
             <div
-              className="relative  md:w-full md:h-[40vh] h-[30vh] rounded-xl text-white font-semibold"
+              className="relative md:h-[30vh] h-[30vh] w-[365px] lg:w-[670px] md:w-[400px] rounded-xl text-white font-semibold"
               style={{
                 background: `linear-gradient(rgba(0,0,0,0.4) , rgba(0,0,0,0.7)) , url(${trip.img})`,
                 backgroundSize: "cover",
@@ -112,7 +112,7 @@ function TripDetails() {
               </div>
             </div>
             {/* Descirptpion */}
-            <div className="min-w-[350px] md:min-w-[670px] mt-4 min-h-[150px]">
+            <div className="min-w-[350px] md:min-w-[100px] md: md: mt-4 md:h-[50px] min-h-[150px]">
               <h3 className="font-bold">Description</h3>
               <p>{trip.tripDetail}</p>
             </div>
@@ -170,10 +170,10 @@ function TripDetails() {
         Participants <span>({trip.participants.length})</span>
       </h2>
       <hr />
-      <div className="space-y-2 max-h-96 overflow-y-auto">
+      <div className="space-y-2 mx-5 max-h-96 overflow-y-auto">
         {trip.participants.map((user, index) => (
           <div key={index}>
-            <div className="mr- md:mx-5 shadow-lg flex items-center p-4 rounded-xl md:justify-between justify-center md:px-20">
+            <div className="mr- lg:mx-5 shadow-lg flex items-center p-4 rounded-xl lg:justify-between justify-center lg:px-20">
               <div className="flex items-center space-x-8">
                 <div
                   className="w-10 h-10 rounded-full border-1"

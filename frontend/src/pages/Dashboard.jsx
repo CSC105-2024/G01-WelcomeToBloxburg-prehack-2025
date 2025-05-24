@@ -54,6 +54,18 @@ function Dashboard() {
 
   return (
     <div className="font-nunito">
+      <div className="lg:hidden mt-9">
+      <div className="flex justify-center">
+        <p className="text-xl p-2 -ml-8 md:text-2xl md:p-2 md:-ml-20">Filter Trips</p>
+        <input
+          type="text"
+          placeholder="Search by location or trip name"
+          className="border border-gray-300 rounded-md px-4 py-2 w-65"
+          value={locationFilter}
+          onChange={(e) => setLocationFilter(e.target.value)}
+        />        
+        </div>
+        </div>
       <div className="hidden lg:inline">
       <div className="bg-blue-400 p-20">
       <div className="flex justify-center items-center ">
