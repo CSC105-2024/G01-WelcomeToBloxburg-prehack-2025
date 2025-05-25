@@ -222,4 +222,4 @@ function TripDetails() {
   );
 }
 
-export default TripDetails; 
+export default TripDetails;

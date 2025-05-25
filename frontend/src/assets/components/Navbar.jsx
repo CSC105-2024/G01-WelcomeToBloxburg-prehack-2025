@@ -49,13 +49,13 @@ function Navbar() {
         {!user && (
           <>
             <button
-              className='px-5 md:px-8 md:py-2 border-1 border-myPrimary rounded-2xl duration-300 hover:bg-myPrimary hover:text-white hover:border-white active:bg-[#02569E]'
+              className='px-5 py-2 md:px-8 md:py-2 border-1 border-myPrimary rounded-2xl duration-300 hover:bg-myPrimary hover:text-white hover:border-white active:bg-[#02569E]'
               onClick={() => window.location.href = "/login"}
             >
               Login
             </button>
             <button
-              className='px-6 md:px-6 md:py-2 border-1 text-white bg-myPrimary rounded-2xl duration-300 hover:bg-[#02569E] active:bg-myPrimary'
+              className='px-5 py-2 md:px-6 md:py-2 border-1 text-white bg-myPrimary rounded-2xl duration-300 hover:bg-[#02569E] active:bg-myPrimary'
               onClick={() => window.location.href = "/register"}
             >
               Sign Up

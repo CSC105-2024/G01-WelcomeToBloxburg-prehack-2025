@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "date-fns";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { FiFilter } from "react-icons/fi";
 
 import {
   Dialog,
@@ -19,8 +22,8 @@ function Dashboard() {
   const [locationFilter, setLocationFilter] = useState("");
   const [startDateFilter, setStartDateFilter] = useState(null);
   const [endDateFilter, setEndDateFilter] = useState(null);
-  const [isStartDateOpen, setIsStartDateOpen] = useState(false);
-  const [isEndDateOpen, setIsEndDateOpen] = useState(false);
+
+  const [isMobileDialogOpen, setIsMobileDialogOpen] = useState(false);
 
   useEffect(() => {
     const fetchTrip = async () => {
@@ -34,8 +37,13 @@ function Dashboard() {
     fetchTrip();
   }, []);
 
+  const handleResetFilters = () => {
+    setLocationFilter("");
+    setStartDateFilter(null);
+    setEndDateFilter(null);
+  };
+
   if (!trip) return <>Loading...</>;
-  console.log(trip);
 
   const filteredTrips = trip.filter((value) => {
     const locationMatch =
@@ -54,82 +62,151 @@ function Dashboard() {
 
   return (
     <div className="font-nunito">
-      <div className="lg:hidden mt-9">
-      <div className="flex justify-center">
-        <p className="text-xl p-2 -ml-8 md:text-2xl md:p-2 md:-ml-20">Filter Trips</p>
-        <input
-          type="text"
-          placeholder="Search by location or trip name"
-          className="border border-gray-300 rounded-md px-4 py-2 w-65"
-          value={locationFilter}
-          onChange={(e) => setLocationFilter(e.target.value)}
-        />        
+      {/* Mobile Filter */}
+      <div className="lg:hidden mt-9 px-4">
+        <div className="flex justify-center w-full">
+          <input
+            type="text"
+            placeholder="Search by location or trip name"
+            className="border border-gray-300 rounded-md px-4 py-2 w-full max-w-md"
+            value={locationFilter}
+            onChange={(e) => setLocationFilter(e.target.value)}
+          />
+
+          <Dialog open={isMobileDialogOpen} onOpenChange={setIsMobileDialogOpen}>
+            <DialogTrigger asChild>
+              <button
+                className="bg-myPrimary text-white px-4 py-2 rounded-md hover:bg-[#02569E] transition flex justify-center items-center ">
+                <FiFilter className="text-lg" />
+                <span className="sr-only">More Filter</span>
+              </button>
+
+            </DialogTrigger>
+
+            <DialogContent className="sm:max-w-[90%] sm:max-h-[80vh] md:max-w-[50%] lg:max-w-[30%]">
+              <DialogHeader>
+                <DialogTitle>Filter by Date</DialogTitle>
+                <DialogDescription>Select a start and end date</DialogDescription>
+              </DialogHeader>
+
+              <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center w-full">
+                <div>
+                  <p className="font-medium mb-1">From</p>
+                  <DatePicker
+                    selected={startDateFilter}
+                    onChange={(date) => setStartDateFilter(date)}
+                    selectsStart
+                    startDate={startDateFilter}
+                    endDate={endDateFilter}
+                    placeholderText="Start Date"
+                    dateFormat="dd/MM/yyyy"
+                    className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    maxDate={endDateFilter}
+                    isClearable
+                  />
+                </div>
+
+                <div>
+                  <p className="font-medium mb-1">To</p>
+                  <DatePicker
+                    selected={endDateFilter}
+                    onChange={(date) => setEndDateFilter(date)}
+                    selectsEnd
+                    startDate={startDateFilter}
+                    endDate={endDateFilter}
+                    placeholderText="End Date"
+                    dateFormat="dd/MM/yyyy"
+                    className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    minDate={startDateFilter}
+                    isClearable
+                  />
+                </div>
+              </div>
+
+              <DialogFooter className="mt-4 flex justify-between">
+                <button
+                  className="bg-gray-200 text-black px-4 py-2 rounded hover:bg-gray-300"
+                  onClick={() => {
+                    handleResetFilters();
+                    setIsMobileDialogOpen(false);
+                  }}
+                >
+                  Reset
+                </button>
+                <button
+                  className="bg-myPrimary text-white px-4 py-2 rounded hover:bg-[#02569E]"
+                  onClick={() => setIsMobileDialogOpen(false)}
+                >
+                  Apply
+                </button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
-        </div>
+      </div>
+
       <div className="hidden lg:inline">
-      <div className="bg-blue-400 p-20">
-      <div className="flex justify-center items-center ">
-        <h1 className="text-4xl font-semibold text-white mr-168">Plan Your Trip</h1>
-      </div>
-      <div className="flex justify-center items-center mt-4 mr-155">
-        <p className="text-xl font-semibold text-white">Find friends along your journey</p>
-      </div>
-      <div className="bg-white rounded-4xl p-20 mx-100 mt-5">
-      <div className="flex justify-center items-center space-x-4 -mt-10">
-        <div className="relative mt-10">
-        <p className="text-2xl font-semibold -mt-7">Filter Trip</p>
-        <input
-          type="text"
-          placeholder="Location or Trip name"
-          className="border border-gray-300 rounded-md px-4 py-2"
-          value={locationFilter}
-          onChange={(e) => setLocationFilter(e.target.value)}
-        />
-        </div>
-        <div className="relative mt-10">
-          <p className="text-lg font-semibold -mt-7">From</p>
-          <input
-            type="text"
-            placeholder="Start Date"
-            className="border border-gray-300 rounded-md px-4 py-2 w-32 cursor-pointer"
-            value={startDateFilter ? format(startDateFilter, 'dd/MM/yyyy') : ''}
-            readOnly
-            onClick={() => setIsStartDateOpen(!isStartDateOpen)}
-          />
-          {isStartDateOpen && (
-            <div className="absolute top-full left-0 mt-2 bg-white shadow-md rounded-md z-10 p-4">
-              {/* Implement your own basic calendar UI here using date-fns */}
-              <p>Basic Calendar for Start Date (using date-fns)</p>
-            </div>
-          )}
-        </div>
-        <div className="relative mt-10">
-          <p className="text-lg font-semibold -mt-7">To</p>
-          <input
-            type="text"
-            placeholder="End Date"
-            className="border border-gray-300 rounded-md px-4 py-2 w-32 cursor-pointer"
-            value={endDateFilter ? format(endDateFilter, 'dd/MM/yyyy') : ''}
-            readOnly
-            onClick={() => setIsEndDateOpen(!isEndDateOpen)}
-          />
-          {isEndDateOpen && (
-            <div className="absolute top-full left-0 mt-2 bg-white shadow-md rounded-md z-10 p-4">
-              {/* Implement your own basic calendar UI here using date-fns */}
-              <p>Basic Calendar for End Date (using date-fns)</p>
-            </div>
-          )}
-        </div>
-        <button className="bg-myPrimary text-white px-4 py-2 rounded-md mt-10 hover:bg-[#02569E] transition">
-          Search
-        </button>
-        <button className="bg-myPrimary text-white px-4 py-2 rounded-md mt-10 hover:bg-[#02569E] transition">
-          Reset Filter
-        </button>
-      </div>
-      </div>
+        <div className="bg-blue-400 p-20">
+          <div className="flex justify-center items-center ">
+            <h1 className="text-4xl font-semibold text-white mr-168">Plan Your Trip</h1>
           </div>
+          <div className="flex justify-center items-center mt-4 mr-155">
+            <p className="text-xl font-semibold text-white">Find friends along your journey</p>
           </div>
+          <div className="bg-white rounded-4xl p-20 mx-100 mt-5">
+            <div className="flex justify-center items-center space-x-4 -mt-10">
+              <div className="relative mt-10">
+                <p className="text-2xl font-semibold -mt-7">Search</p>
+                <input
+                  type="text"
+                  placeholder="Location or Trip name"
+                  className="border border-gray-300 rounded-md px-4 py-2"
+                  value={locationFilter}
+                  onChange={(e) => setLocationFilter(e.target.value)}
+                />
+              </div>
+              <div className="relative mt-10">
+                <p className="text-lg font-semibold -mt-7">From</p>
+                <DatePicker
+                  selected={startDateFilter}
+                  onChange={(date) => setStartDateFilter(date)}
+                  selectsStart
+                  startDate={startDateFilter}
+                  endDate={endDateFilter}
+                  placeholderText="Start Date"
+                  dateFormat="dd/MM/yyyy"
+                  className="border border-gray-300 rounded-md px-4 py-2 w-32 cursor-pointer"
+                  maxDate={endDateFilter}
+                  isClearable
+                />
+              </div>
+
+              <div className="relative mt-10">
+                <p className="text-lg font-semibold -mt-7">To</p>
+                <DatePicker
+                  selected={endDateFilter}
+                  onChange={(date) => setEndDateFilter(date)}
+                  selectsEnd
+                  startDate={startDateFilter}
+                  endDate={endDateFilter}
+                  placeholderText="End Date"
+                  dateFormat="dd/MM/yyyy"
+                  className="border border-gray-300 rounded-md px-4 py-2 w-32 cursor-pointer"
+                  minDate={startDateFilter}
+                  isClearable
+                />
+              </div>
+              <button
+                className="bg-white border border-blue-500 text-black px-4 py-2 rounded-md mt-10 hover:bg-myPrimary transition"
+                onClick={handleResetFilters}
+              >
+                Reset Filter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 md:px-8 lg:px-16 mt-8 md:mt-12">
         <h1 className="text-xl md:text-2xl font-semibold mb-4">All Trips</h1>
         <hr className="mb-6 border-gray-300" />
@@ -170,7 +247,7 @@ function Dashboard() {
                   </span>
                   <span className="text-black flex items-center">
                     <FaRegCalendarAlt className="mr-2 text-lg" />
-                    {format(value.dateStart, "PPP")} - {format(value.dateEnd, "PPP")}
+                    {format(new Date(value.dateStart), "PPP")} - {format(new Date(value.dateEnd), "PPP")}
                   </span>
                 </p>
                 <div className="mt-2 flex items-center justify-between">

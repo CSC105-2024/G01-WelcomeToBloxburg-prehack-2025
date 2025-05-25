@@ -118,77 +118,81 @@ function Profile() {
     <div>
       <div className="relative h-[50vh] w-full flex justify-center font-nunito">
         <div className="w-full h-[25vh] bg-amber-50"></div>
-        <div className="absolute w-3/4 h-[25vh] border-1 border-black top-[12vh] z-50 bg-white flex items-center justify-between p-18">
-          <div className=" flex items-center ">
+        <div className="absolute w-11/12 lg:w-2/4 min-h-[25vh] border border-black top-[12vh] z-50 bg-white flex flex-col lg:flex-row items-center lg:items-center justify-between p-6 gap-6">
+          {/* Left section - Profile Pic */}
+          <div className="flex flex-col lg:flex-row items-center gap-4">
             <img
               src={previewImg}
               alt="Profile"
-              className="w-20 h-35 -ml-15 md:ml-1 md:w-40 md:h-40 object-cover rounded-full  border-1 border-black"
+              className="w-24 h-24 md:w-40 md:h-40 object-cover rounded-full border border-black"
             />
 
-            <div className="ml-10 -mt-20 mr-4 md:space-y-4 md:p-4">
-              <h1 className="text-xl md:text-2xl flex items-center">
+            <div className="text-center lg:text-left space-y-1">
+              <div className="text-xl md:text-2xl font-semibold flex items-center justify-center lg:justify-start">
                 {user.name}
                 {isCreator && (
                   <FaEdit
-                    className="ml-4 duration-300 hover:bg-gray-200 p-1 text-3xl rounded-sm cursor-pointer hover:scale-110"
+                    className="ml-2 hover:bg-gray-200 p-1 text-xl rounded-sm cursor-pointer hover:scale-110"
                     onClick={() => setDialogOpen(!dialogOpen)}
                   />
                 )}
-              </h1>
-              <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                <DialogContent className="sm:max-w-[425px] ">
-                  <DialogHeader>
-                    <DialogTitle
-                      className={"flex justify-center text-2xl font-bold"}
-                    >
-                      Your Profile
-                    </DialogTitle>
-                    <DialogDescription className={"text-center"}>
-                      Make changes to your profile here. Click save when you're
-                      done.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="flex flex-col justify-center items-center">
-                    <img
-                      src={previewImg}
-                      alt="Profile"
-                      className="w-32 h-32 object-cover rounded-full cursor-pointer border-1 border-black"
-                      onClick={handleInputClick}
-                    />
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleFileChange}
-                      className="hidden"
-                      ref={inputRef}
-                    />
-                    <div>
-                      <p>Name</p>
-                      <input
-                        type="text"
-                        name=""
-                        id=""
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <DialogFooter>
-                    <button type="submit" onClick={handleEditProfile}>
-                      Save changes
-                    </button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-              <h1>{user.gender}</h1>
+              </div>
+              <h1 className="text-sm md:text-lg">{user.gender}</h1>
+              <div className="text-sm md:text-lg">
+                Total Contributions:{" "}
+                <span className="font-bold">{user.tripParticipants.length}</span>
+              </div>
             </div>
           </div>
-          <div className="flex mt-10 items-center flex-col md:justify-center space-y-2">
-            <h1 className="mt-20 -ml-5 text-sm md:text-2xl">Total Contributions</h1>
-            <h1 className="text-sm -ml-8 md:text-2xl">{user.tripParticipants.length}</h1>
-          </div>
+
+          {/* Edit Dialog remains unchanged */}
+          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle className="flex justify-center text-2xl font-bold">
+                  Your Profile
+                </DialogTitle>
+                <DialogDescription className="text-center">
+                  Make changes to your profile here. Click save when you're done.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex flex-col justify-center items-center">
+                <img
+                  src={previewImg}
+                  alt="Profile"
+                  className="w-32 h-32 object-cover rounded-full cursor-pointer border border-black"
+                  onClick={handleInputClick}
+                />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="hidden"
+                  ref={inputRef}
+                />
+                <div className="w-full mt-4 px-4">
+                  <p className="text-sm mb-1">Name</p>
+                  <input
+                    type="text"
+                    className="w-full border px-2 py-1 rounded"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <button
+                  type="submit"
+                  onClick={handleEditProfile}
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                  Save changes
+                </button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
+
       </div>
       <div className="flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-20">
