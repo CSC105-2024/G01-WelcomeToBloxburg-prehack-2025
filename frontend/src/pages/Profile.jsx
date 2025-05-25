@@ -70,7 +70,6 @@ function Profile() {
       const age = birth;
       const data = {
         name: name,
-        // age: age,
         img: imageUrl || user.img,
       };
 
@@ -119,7 +118,6 @@ function Profile() {
       <div className="relative h-[50vh] w-full flex justify-center font-nunito">
         <div className="w-full h-[25vh] bg-amber-50"></div>
         <div className="absolute w-11/12 lg:w-2/4 min-h-[25vh] border border-black top-[12vh] z-50 bg-white flex flex-col lg:flex-row items-center lg:items-center justify-between p-6 gap-6">
-          {/* Left section - Profile Pic */}
           <div className="flex flex-col lg:flex-row items-center gap-4">
             <img
               src={previewImg}
@@ -145,7 +143,6 @@ function Profile() {
             </div>
           </div>
 
-          {/* Edit Dialog remains unchanged */}
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
