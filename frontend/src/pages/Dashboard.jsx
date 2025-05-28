@@ -146,14 +146,14 @@ function Dashboard() {
       </div>
 
       <div className="hidden lg:inline">
-        <div className="bg-blue-400 p-20">
+        <div className="bg-myPrimary p-20">
           <div className="flex justify-center items-center ">
-            <h1 className="text-4xl font-semibold text-white mr-168">Plan Your Trip</h1>
+            <h1 className="text-4xl font-semibold text-white -ml-230">Plan Your Trip</h1>
           </div>
-          <div className="flex justify-center items-center mt-4 mr-155">
+          <div className="flex justify-center items-center mt-4 -ml-215">
             <p className="text-xl font-semibold text-white">Find friends along your journey</p>
           </div>
-          <div className="bg-white rounded-4xl p-20 mx-100 mt-5">
+          <div className="bg-white rounded-4xl p-20 mx-130 mt-5 ">
             <div className="flex justify-center items-center space-x-4 -mt-10">
               <div className="relative mt-10">
                 <p className="text-2xl font-semibold -mt-7">Search</p>
