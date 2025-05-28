@@ -26,9 +26,10 @@ function Login() {
       }
     }
   return (
-    <div className='flex justify-center items-center font-nunito h-[90vh]'>
+    <div className=''>
+    <div className='flex justify-center items-center font-nunito h-[80vh] md:h-[90vh] '>
       <div className='border-1 rounded-xl flex flex-col items-center p-12 w-2xl space-y-3'>
-        <h1 className='text-4xl'>Login</h1>
+        <h1 className='text-3xl md:text-4xl'>Login</h1>
         <div>
             <p>Email</p>
             <input type="text" placeholder='Email' className='p-2 rounded-xl min-w-sm' value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -43,6 +44,7 @@ function Login() {
         <p className='text-sm'>Don't have an account? <span className='text-myPrimary cursor-pointer' >Sign Up</span></p>
       </div>
     </div>
+    </div> 
   )
 }
 

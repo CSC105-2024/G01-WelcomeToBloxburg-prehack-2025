@@ -77,7 +77,7 @@ function Chatroom() {
   return (
     <div className="flex mt-10 flex-col items-center ">
       <div className="relative w-full h-full flex flex-col items-center">
-        <h1 className="text-4xl ">Chat room of {chatroom.tripName}</h1>
+        <h1 className="text-2xl md:text-4xl">Chat room of {chatroom.tripName}</h1>
         <div
           className="mt-4  w-full  h-[75vh]  overflow-y-auto bg-gray-50 "
           ref={chatRef}

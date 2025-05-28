@@ -87,13 +87,13 @@ function TripDetails() {
   if (userIds.includes(currentUser.id)) participate = true;
   if (trip.createdById === currentUser.id) creator = true;
   return (
-    <div className="mx-100">
-      <div className="flex justify-center mt-20">
+    <div className="mx-auto md:mx-50 px-4 md:px-8 lg:px-16">
+      <div className="mt-10 md:mt-20  md:flex md:justify-center">
         <div className="flex space-x-6 font-nunito ">
-          <div>
+          <div className="flex flex-col space-y-4 ">
             {/* Image Lucaton */}
             <div
-              className="relative  w-full h-[40vh] rounded-xl text-white font-semibold"
+              className="relative md:h-[30vh] h-[30vh] w-[365px] lg:w-[670px] md:w-[400px] rounded-xl text-white font-semibold"
               style={{
                 background: `linear-gradient(rgba(0,0,0,0.4) , rgba(0,0,0,0.7)) , url(${trip.img})`,
                 backgroundSize: "cover",
@@ -112,7 +112,7 @@ function TripDetails() {
               </div>
             </div>
             {/* Descirptpion */}
-            <div className="min-w-[670px] mt-4 min-h-[150px]">
+            <div className="min-w-[350px] md:min-w-[100px] md: md: mt-4 md:h-[50px] min-h-[150px]">
               <h3 className="font-bold">Description</h3>
               <p>{trip.tripDetail}</p>
             </div>
@@ -150,7 +150,7 @@ function TripDetails() {
       <div className="flex justify-center items-center my-10 space-x-30">
         {participate && (
           <button
-            className="px-20 py-3 w-3xs text-2xl border-2 border-myPrimary rounded-2xl duration-300 hover:bg-myPrimary hover:text-white hover:border-white active:bg-[#02569E] shadow-lg"
+            className="px-10 py-2 flex justify-center md:px-20 md:py-3 md:w-3xs text-2xl border-2 border-myPrimary rounded-2xl duration-300 hover:bg-myPrimary hover:text-white hover:border-white active:bg-[#02569E] shadow-lg"
             onClick={() => (window.location.href = `/chat/${tripId.tripId}`)}
           >
             Discuss
@@ -159,21 +159,21 @@ function TripDetails() {
 
         {!participate && (
           <button
-            className="px-20 py-3 w-3xs text-2xl border-2    text-white bg-myPrimary rounded-2xl duration-300 hover:bg-[#02569E] active:bg-myPrimary shadow-lg"
+            className="px-20 py-3 w-3xs text-2xl border-2 text-white bg-myPrimary rounded-2xl duration-300 hover:bg-[#02569E] active:bg-myPrimary shadow-lg"
             onClick={requestTrip}
           >
             Join
           </button>
         )}
       </div>
-      <h2 className="mx-5 text-2xl font-semibold my-2">
+      <h2 className="mx-5 text-xl md:text-2xl font-semibold my-2">
         Participants <span>({trip.participants.length})</span>
       </h2>
       <hr />
-      <div className="space-y-2 max-h-96 overflow-y-auto">
+      <div className="space-y-2 mx-5 max-h-96 overflow-y-auto">
         {trip.participants.map((user, index) => (
           <div key={index}>
-            <div className="mx-5 shadow-lg flex items-center p-4 rounded-xl justify-between px-20">
+            <div className="mr- lg:mx-5 shadow-lg flex items-center p-4 rounded-xl lg:justify-between justify-center lg:px-20">
               <div className="flex items-center space-x-8">
                 <div
                   className="w-10 h-10 rounded-full border-1"
