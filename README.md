@@ -41,7 +41,7 @@ A full-stack web application to manage trips and participants with seamless auth
 | PATCH  | `/:id`           | Update user             |
 | POST   | `/`              | Create new user         |
 
-### 🔐 `user/api`
+### 🔐 `/user/api`
 | Method | Endpoint         | Description                   |
 |--------|------------------|-------------------------------|
 | POST   | `/login`         | Log in                        |
@@ -68,6 +68,7 @@ cd hackathon-trip-planner
 
 ```
 2. Setup Environment Variables
+```bash
 Create a .env file inside the /backend directory:
 
 ini
@@ -76,8 +77,10 @@ Edit
 DATABASE_URL=your_prisma_db_url
 JWT_SECRET=your_jwt_secret
 PORT=4002
-
+```
 3. Install Dependencies
+
+```bash
 Backend
 bash
 Copy
@@ -91,10 +94,12 @@ Copy
 Edit
 cd frontend
 npm install
-4. Run the App
+```
+5. Run the App
+
+```bash
 Start the backend:
 
-bash
 Copy
 Edit
 cd backend
@@ -106,6 +111,7 @@ Copy
 Edit
 cd frontend
 npm start
+```
 
 💡 Features
 🔒 Authentication (Login / Logout)
