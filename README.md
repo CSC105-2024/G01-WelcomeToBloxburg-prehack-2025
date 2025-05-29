@@ -68,47 +68,34 @@ cd hackathon-trip-planner
 
 ```
 2. Setup Environment Variables
-```bash
 Create a .env file inside the /backend directory:
-
-
-Copy
-Edit
+```bash
 DATABASE_URL=your_prisma_db_url
 JWT_SECRET=your_jwt_secret
 PORT=4002
 ```
 3. Install Dependencies
 
-```bash
 Backend
-bash
-Copy
-Edit
+```bash
 cd backend
 npm install
 npx prisma generate
+```
 Frontend
-bash
-Copy
-Edit
+```
 cd frontend
 npm install
 ```
 5. Run the App
 
-```bash
 Start the backend:
-
-Copy
-Edit
+```bash
 cd backend
 npm run dev
+```
 Start the frontend:
-
-bash
-Copy
-Edit
+```
 cd frontend
 npm start
 ```
