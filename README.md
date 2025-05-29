@@ -63,8 +63,8 @@ Clean and responsive UI
 
 ### 1. Clone the Repo
 ```bash
-git clone https://github.com/yourusername/hackathon-trip-planner.git
-cd hackathon-trip-planner
+git clone https://github.com/CSC105-2024/G01-WelcomeToBloxburg-prehack-2025.git
+cd G01-WelcomeToBloxburg-prehack-2025
 
 ```
 2. Setup Environment Variables
