@@ -17,7 +17,7 @@ A full-stack web application to manage trips and participants with seamless auth
 
 ## 🔌 API Routes
 
-### 📍 `/trips`
+### 📍 `/trip`
 | Method | Endpoint        | Description                     |
 |--------|------------------|---------------------------------|
 | GET    | `/`              | Get all trips                   |
@@ -26,14 +26,14 @@ A full-stack web application to manage trips and participants with seamless auth
 | PATCH  | `/:id`           | Update a trip                   |
 | DELETE | `/:id`           | Delete a trip                   |
 
-### 👥 `/trip-participants`
+### 👥 `/participant`
 | Method | Endpoint        | Description                           |
 |--------|------------------|---------------------------------------|
 | GET    | `/`              | Get all trip participants             |
 | POST   | `/`              | Request to join a trip (auth required)|
 | PATCH  | `/:userId`       | Update a participant info             |
 
-### 🧑 `/users`
+### 🧑 `/user`
 | Method | Endpoint        | Description             |
 |--------|------------------|-------------------------|
 | GET    | `/`              | Get all users           |
@@ -41,7 +41,7 @@ A full-stack web application to manage trips and participants with seamless auth
 | PATCH  | `/:id`           | Update user             |
 | POST   | `/`              | Create new user         |
 
-### 🔐 `users/api`
+### 🔐 `user/api`
 | Method | Endpoint         | Description                   |
 |--------|------------------|-------------------------------|
 | POST   | `/login`         | Log in                        |
@@ -65,5 +65,57 @@ Clean and responsive UI
 ```bash
 git clone https://github.com/yourusername/hackathon-trip-planner.git
 cd hackathon-trip-planner
+
+```
+2. Setup Environment Variables
+Create a .env file inside the /backend directory:
+
+ini
+Copy
+Edit
+DATABASE_URL=your_prisma_db_url
+JWT_SECRET=your_jwt_secret
+PORT=4002
+
+3. Install Dependencies
+Backend
+bash
+Copy
+Edit
+cd backend
+npm install
+npx prisma generate
+Frontend
+bash
+Copy
+Edit
+cd frontend
+npm install
+4. Run the App
+Start the backend:
+
+bash
+Copy
+Edit
+cd backend
+npm run dev
+Start the frontend:
+
+bash
+Copy
+Edit
+cd frontend
+npm start
+
+💡 Features
+🔒 Authentication (Login / Logout)
+
+✍️ Create & manage trips
+
+🧑‍🤝‍🧑 Join and manage trip participants
+
+🌐 Fully responsive UI
+
+
 
 
