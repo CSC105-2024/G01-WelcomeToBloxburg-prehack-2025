@@ -40,7 +40,14 @@ A full-stack web application to manage trips and participants with seamless auth
 - `POST /logout` – Log out user
 - `GET /profile` – Get logged-in user profile *(auth required)*
 
----
+---💡 Features
+User authentication with login/logout
+
+Trip creation, editing, and deletion
+
+Join and manage trip participants
+
+Clean and responsive UI
 
 ## 🧪 Running the Project
 
@@ -48,3 +55,5 @@ A full-stack web application to manage trips and participants with seamless auth
 ```bash
 git clone https://github.com/yourusername/hackathon-trip-planner.git
 cd hackathon-trip-planner
+
+
