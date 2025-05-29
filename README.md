@@ -97,7 +97,7 @@ npm run dev
 Start the frontend:
 ```
 cd frontend
-npm start
+npm run dev
 ```
 
 💡 Features
