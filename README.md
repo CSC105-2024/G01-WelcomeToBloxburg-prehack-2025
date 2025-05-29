@@ -71,7 +71,7 @@ cd hackathon-trip-planner
 ```bash
 Create a .env file inside the /backend directory:
 
-ini
+
 Copy
 Edit
 DATABASE_URL=your_prisma_db_url
