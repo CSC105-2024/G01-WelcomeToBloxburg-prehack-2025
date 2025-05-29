@@ -15,30 +15,40 @@ A full-stack web application to manage trips and participants with seamless auth
 
 ---
 
-## 🔌 API Endpoints
+## 🔌 API Routes
 
-### 🌍 `/trips`
-- `GET /` – Get all trips
-- `GET /:id` – Get a single trip by ID
-- `POST /` – Create a new trip *(auth required)*
-- `PATCH /:id` – Update a trip
-- `DELETE /:id` – Delete a trip
+### 📍 `/trips`
+| Method | Endpoint        | Description                     |
+|--------|------------------|---------------------------------|
+| GET    | `/`              | Get all trips                   |
+| GET    | `/:id`           | Get a single trip               |
+| POST   | `/`              | Create a trip (auth required)   |
+| PATCH  | `/:id`           | Update a trip                   |
+| DELETE | `/:id`           | Delete a trip                   |
 
 ### 👥 `/trip-participants`
-- `GET /` – Get all trip participants
-- `POST /` – Request to join a trip *(auth required)*
-- `PATCH /:userId` – Update a trip participant
+| Method | Endpoint        | Description                           |
+|--------|------------------|---------------------------------------|
+| GET    | `/`              | Get all trip participants             |
+| POST   | `/`              | Request to join a trip (auth required)|
+| PATCH  | `/:userId`       | Update a participant info             |
 
-### 🙋 `/users`
-- `GET /` – Get all users
-- `GET /:id` – Get user by ID
-- `PATCH /:id` – Update user
-- `POST /` – Create new user
+### 🧑 `/users`
+| Method | Endpoint        | Description             |
+|--------|------------------|-------------------------|
+| GET    | `/`              | Get all users           |
+| GET    | `/:id`           | Get one user            |
+| PATCH  | `/:id`           | Update user             |
+| POST   | `/`              | Create new user         |
 
-### 🔐 `/api`
-- `POST /login` – Log in user
-- `POST /logout` – Log out user
-- `GET /profile` – Get logged-in user profile *(auth required)*
+### 🔐 `users/api`
+| Method | Endpoint         | Description                   |
+|--------|------------------|-------------------------------|
+| POST   | `/login`         | Log in                        |
+| POST   | `/logout`        | Log out                       |
+| GET    | `/profile`       | Get current user profile (auth)|
+
+---
 
 ---💡 Features
 User authentication with login/logout
