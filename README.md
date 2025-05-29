@@ -9,7 +9,7 @@ A full-stack web application to manage trips and participants with seamless auth
 - **Tailwind CSS** – Utility-first CSS for fast UI development
 
 ### Backend
-- **Node.js & Express** – REST API server
+- **Node.js & Hono** – REST API server
 - **Prisma** – Modern ORM for database interaction
 - **JWT Authentication** – Secure access for authenticated users
 
